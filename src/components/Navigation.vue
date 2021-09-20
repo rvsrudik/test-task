@@ -24,11 +24,6 @@ export default {
           auth: false,
         },
         {
-          title: 'CRM',
-          routeName: 'Crm',
-          auth: true
-        },
-        {
           title: 'Dashboard',
           routeName: 'Dashboard',
           auth: true,
