@@ -36,13 +36,13 @@ export default {
         {
           title: 'PrivacyPolicy',
           routeName: 'PrivacyPolicy',
-        }
-      ]
+        },
+      ],
     };
   },
   computed: {
     filteredMenu() {
-      return this.menu.filter(menuItem => {
+      return this.menu.filter((menuItem) => {
         // show menu item only for logged
         if (menuItem.auth === true) {
           return !!localStorage.getItem('token');
@@ -54,10 +54,10 @@ export default {
         }
 
         return true;
-      })
+      });
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

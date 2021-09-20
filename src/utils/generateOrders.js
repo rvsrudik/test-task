@@ -1,7 +1,7 @@
-export function ordersGenerator(amount) {
+export default function ordersGenerator(amount) {
   const orders = new Array(amount);
 
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < amount; i += 1) {
     const id = i + 1;
     orders[i] = {
       id,

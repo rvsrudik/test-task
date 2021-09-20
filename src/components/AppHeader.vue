@@ -7,12 +7,12 @@
 
 <script>
 import AppNavigation from '@/components/AppNavigation.vue';
-import { logout } from '@/common/auth.js'
+import { logout } from '@/common/auth';
 
 export default {
   name: 'DefaultLayout',
   components: {
-    AppNavigation
+    AppNavigation,
   },
   methods: {
     doLogout() {
@@ -24,7 +24,7 @@ export default {
     isUserLogged() {
       // I know that local storage is not reactive, but in real life It would be some getter
       return localStorage.getItem('token');
-    }
-  }
+    },
+  },
 };
 </script>

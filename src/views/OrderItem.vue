@@ -5,14 +5,14 @@
     <v-card class="order-card" :loading="loading.order">
       <template v-if="order">
         <v-card-title>{{ order.name }}</v-card-title>
-        <v-card-text>{{ order.description }}</v-card-text>  
+        <v-card-text>{{ order.description }}</v-card-text>
       </template>
     </v-card>
   </div>
 </template>
 
 <script>
-import { getOrderById } from '@/api/services.js'
+import { getOrderById } from '@/api/services';
 
 export default {
   name: 'OrderItem',
@@ -21,7 +21,7 @@ export default {
       order: null,
       loading: {
         order: false,
-      }
+      },
     };
   },
   mounted() {
@@ -35,13 +35,13 @@ export default {
         const response = await getOrderById(this.$route.params.id);
         this.order = response.payload;
       } catch (err) {
-        this.$notify.error(err.error)
+        this.$notify.error(err.message);
       } finally {
         this.loading.order = false;
       }
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Login from '@/views/Login.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Login from '@/views/Login.vue';
 import auth from './middleware/auth';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   // public
@@ -12,13 +12,13 @@ const routes = [
     name: 'Login',
     component: Login,
     meta: {
-     layout: 'auth-layout'
-    }
+      layout: 'auth-layout',
+    },
   },
   {
     path: '/privacy-policy',
     name: 'PrivacyPolicy',
-    component: () => import(/* webpackChunkName: "privacy-policy" */ '@/views/PrivacyPolicy.vue')
+    component: () => import(/* webpackChunkName: "privacy-policy" */ '@/views/PrivacyPolicy.vue'),
   },
   // private
   {
@@ -42,7 +42,7 @@ const routes = [
         name: 'OrderItem',
         component: () => import(/* webpackChunkName: "order-item" */ '@/views/OrderItem.vue'),
       },
-    ]
+    ],
   },
   {
     path: '*',
@@ -54,23 +54,22 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
 router.beforeEach(async (to, from, next) => {
   if (to.path === '/') {
-    await router.push({name: 'Crm'});
+    await router.push({ name: 'Crm' });
   }
 
   try {
     if (to.meta.middleware && to.meta.middleware.length) {
-      to.meta.middleware.forEach(middleware => middleware());
+      to.meta.middleware.forEach((middleware) => middleware());
     }
     await next();
-  } catch (e) {
-    console.warn(e);
-    await router.push(e);
+  } catch (err) {
+    await router.push(err);
   }
 });
 
-export default router
+export default router;

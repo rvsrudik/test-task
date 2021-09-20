@@ -14,7 +14,7 @@ import AppHeader from '@/components/AppHeader.vue';
 export default {
   name: 'Crm',
   components: {
-    AppHeader
-  }
-}
+    AppHeader,
+  },
+};
 </script>

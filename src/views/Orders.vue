@@ -15,7 +15,7 @@
     >
 
     <template #item.actions="{ item }">
-      <router-link 
+      <router-link
         :to="{ name: 'OrderItem', params: {id: item.id}}"
       >
         Open
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { getOrders } from '@/api/services.js'
+import { getOrders } from '@/api/services';
 
 export default {
   name: 'Orders',
@@ -47,7 +47,7 @@ export default {
       pagination: {
         page: 1,
         itemsPerPage: 10,
-      }
+      },
     };
   },
   mounted() {
@@ -60,9 +60,9 @@ export default {
       try {
         const response = await getOrders(this.pagination.page, this.pagination.itemsPerPage);
         this.orders = response.payload.result;
-        this.totalOrders = response.payload.total
+        this.totalOrders = response.payload.total;
       } catch (err) {
-        this.$notify.error(err.error)
+        this.$notify.error(err.error);
       } finally {
         this.loading.orders = false;
       }
@@ -72,9 +72,9 @@ export default {
       this.pagination.itemsPerPage = pagination.itemsPerPage;
 
       this.loadOrders();
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

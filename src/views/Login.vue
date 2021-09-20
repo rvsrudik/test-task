@@ -36,9 +36,9 @@
 
 <script>
 
-import { loginRequest } from '@/api/services.js';
-import { rules } from '@/common/validations.js'
-import { login } from '@/common/auth.js'
+import { loginRequest } from '@/api/services';
+import rules from '@/common/validations';
+import { login } from '@/common/auth';
 
 export default {
   name: 'Login',
@@ -51,7 +51,7 @@ export default {
       },
       loading: {
         submitLogin: false,
-      }
+      },
     };
   },
   methods: {
@@ -64,13 +64,13 @@ export default {
         login();
         this.$router.push({ name: 'Dashboard' });
       } catch (err) {
-        this.$notify.error(err.error)
+        this.$notify.error(err.message);
       } finally {
-        this.loading.submitLogin = false
+        this.loading.submitLogin = false;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
