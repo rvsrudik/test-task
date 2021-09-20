@@ -10,8 +10,19 @@
       :server-items-length="totalOrders"
       :loading="loading.orders"
       disable-filtering
+      disable-sort
       @pagination="onPaginationChanged"
-    />
+    >
+
+    <template #item.actions="{ item }">
+      <router-link 
+        :to="{ name: 'OrderItem', params: {id: item.id}}"
+      >
+        Open
+      </router-link>
+    </template>
+
+    </v-data-table>
   </div>
 </template>
 
@@ -26,6 +37,7 @@ export default {
         { text: 'Id', value: 'id' },
         { text: 'Name', value: 'name' },
         { text: 'Description', value: 'description' },
+        { text: 'Actions', value: 'actions' },
       ],
       orders: [],
       totalOrders: null,
@@ -54,9 +66,6 @@ export default {
       } finally {
         this.loading.orders = false;
       }
-    },
-    goToOrder(id) {
-      this.$router.push({ name: 'OrderItem', params: { id } })
     },
     onPaginationChanged(pagination) {
       this.pagination.page = pagination.page;

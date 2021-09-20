@@ -2,13 +2,12 @@
   <div class="order-item">
     <h1 class="mb-5">Order Item</h1>
 
-    <v-fade-transition>
-      <v-progress-circular v-if="loading.order" indeterminate class="order-item__loader" />
-      <v-card v-else>
+    <v-card class="order-card" :loading="loading.order">
+      <template v-if="order">
         <v-card-title>{{ order.name }}</v-card-title>
-        <v-card-text>{{ order.description }}</v-card-text>
-      </v-card>
-     </v-fade-transition>
+        <v-card-text>{{ order.description }}</v-card-text>  
+      </template>
+    </v-card>
   </div>
 </template>
 
@@ -54,5 +53,8 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+.order-card {
+  min-height: 200px;
 }
 </style>
