@@ -26,24 +26,23 @@ const routes = [
     name: 'Crm',
     component: () => import(/* webpackChunkName: "crm" */ '@/views/Crm.vue'),
     meta: { middleware: [auth] },
-  },
-  {
-    path: '/crm/dashboard',
-    name: 'Dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
-    meta: { middleware: [auth] },
-  },
-  {
-    path: '/crm/orders',
-    name: 'Orders',
-    component: () => import(/* webpackChunkName: "orders" */ '@/views/Orders.vue'),
-    meta: { middleware: [auth] },
-  },
-  {
-    path: '/crm/orders/:id',
-    name: 'OrderItem',
-    component: () => import(/* webpackChunkName: "order-item" */ '@/views/OrderItem.vue'),
-    meta: { middleware: [auth] },
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
+      },
+      {
+        path: '/crm/orders',
+        name: 'Orders',
+        component: () => import(/* webpackChunkName: "orders" */ '@/views/Orders.vue'),
+      },
+      {
+        path: '/crm/orders/:id',
+        name: 'OrderItem',
+        component: () => import(/* webpackChunkName: "order-item" */ '@/views/OrderItem.vue'),
+      },
+    ]
   },
   {
     path: '*',
