@@ -1,3 +1,6 @@
+import { ordersGenerator } from '@/utils/generateOrders.js';
+const orders = ordersGenerator(98);
+
 export function loginRequest(login, password) {
   const isLoginSuccess = login === 'admin' && password === '!@12345';
   
@@ -10,45 +13,22 @@ export function loginRequest(login, password) {
   });  
 }
 
+export function getOrders(page = 1, itemsPerPage = 10) {
+  const startFrom = (page - 1) * itemsPerPage;
 
-const orders = [
-  {
-    id: 1,
-    name: 'Order 1',
-    description: 'Description 1',
-  },
-  {
-    id: 2,
-    name: 'Order 2',
-    description: 'Description 2',
-  },
-  {
-    id: 3,
-    name: 'Order 3',
-    description: 'Description 3',
-  },
-  {
-    id: 4,
-    name: 'Order 4',
-    description: 'Description 4',
-  },
-  {
-    id: 5,
-    name: 'Order 5',
-    description: 'Description 5',
-  },
-]
-
-export function getOrders() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ status: 'ok', payload: orders })
+      resolve({ 
+        status: 'ok', 
+        payload: {
+          result: orders.slice(startFrom, startFrom + itemsPerPage),
+          total: orders.length,
+        }})
     }, 500);
   });  
 }
 
 export function getOrderById(id) {
-  console.log('id', id);
   const order = orders.find(o => parseInt(o.id) === parseInt(id));
   return new Promise((resolve, reject) => {
     setTimeout(() => {
