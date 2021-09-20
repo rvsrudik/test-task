@@ -1,5 +1,7 @@
 # pbegin-task
 
+to login use creds: admin / !@12345
+
 ## Project setup
 ```
 npm install
