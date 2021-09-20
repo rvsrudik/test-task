@@ -1,5 +1,7 @@
 <template>
   <div class="privacy-policy">
+    <app-header/>
+
     <h1 class="mb-5">Privacy policy</h1>
 
     <content>
@@ -29,3 +31,14 @@
     </content>
   </div>
 </template>
+
+<script>
+import AppHeader from '@/components/AppHeader.vue';
+
+export default {
+  name: 'PrivacyPolicy',
+  components: {
+    AppHeader
+  }
+}
+</script>

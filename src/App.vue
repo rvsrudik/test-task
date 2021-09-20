@@ -1,28 +1,14 @@
 <template>
   <v-app>
     <v-main>
-      <component :is="layout">
-        <router-view />
-      </component>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import AuthLayout from '@/layouts/AuthLayout.vue';
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
-
 export default {
   name: 'App',
-  components: {
-    AuthLayout,
-    DefaultLayout,
-  },
-  computed: {
-    layout() {
-      return this.$route.meta.layout || 'default-layout'
-    }
-  } 
 }
 </script>
 

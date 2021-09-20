@@ -1,5 +1,6 @@
 <template>
-  <div class="login">
+<div class="login">
+  <div class="login__content">
     <h1 class="mb-2">Login :) </h1>
     <v-form ref="login-form" @submit.prevent="onLoginSubmit">
       <v-text-field
@@ -30,6 +31,7 @@
       <router-link :to="{name: 'PrivacyPolicy'}">Privaci Policy</router-link>
     </nav>
   </div>
+</div>
 </template>
 
 <script>
@@ -60,7 +62,7 @@ export default {
       try {
         await loginRequest(this.loginForm.username, this.loginForm.password);
         login();
-        this.$router.push({ name: 'Crm' });
+        this.$router.push({ name: 'Dashboard' });
       } catch (err) {
         this.$notify.error(err.error)
       } finally {
@@ -73,6 +75,15 @@ export default {
 
 <style lang="scss" scoped>
 .login {
-  width: 300px;
+   width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom right, #30fcc9, #67e763);
+
+  &__content {
+    width: 300px;
+  }
 }
 </style>

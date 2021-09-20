@@ -1,23 +1,18 @@
 <template>
-  <div class="default-layout">
-    <header>
-      <navigation />
-      <v-btn v-if="isUserLogged" color="warning" @click="doLogout">Logout</v-btn>
-    </header>
-    <v-container>
-      <slot />
-    </v-container>
-  </div>
+  <header>
+    <app-navigation />
+    <v-btn v-if="isUserLogged" color="warning" @click="doLogout">Logout</v-btn>
+  </header>
 </template>
 
 <script>
-import Navigation from '@/components/Navigation.vue';
+import AppNavigation from '@/components/AppNavigation.vue';
 import { logout } from '@/common/auth.js'
 
 export default {
   name: 'DefaultLayout',
   components: {
-    Navigation
+    AppNavigation
   },
   methods: {
     doLogout() {
