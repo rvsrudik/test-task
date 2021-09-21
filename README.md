@@ -3,12 +3,19 @@ Create a new Vuetify application.
 Create pages and layouts accordingly structure:
 
 -------------- public pages
+
 | - Login
+
 | - Privacy policy
+
 -------------- admit by auth
+
 | - CRM
+
 | --- Dashboard
+
 | --- Orders
+
 | ----- OrderDetail (via dynamic parameter)
 
 Each page should have its own url, like ‘/login’ or ‘/crm/orders/’
